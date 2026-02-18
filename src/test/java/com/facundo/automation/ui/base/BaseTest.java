@@ -1,4 +1,4 @@
-package com.facundo.automation.ui.tests;
+package com.facundo.automation.ui.base;
 
 import com.facundo.automation.ui.utils.DriverManager;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +11,8 @@ import org.testng.annotations.BeforeMethod;
  * Handles WebDriver setup and teardown for each test method.
  */
 public class BaseTest {
+    protected static final String TEST_USERNAME = "testuser_facundoPucheta";
+    protected static final String TEST_PASSWORD = "F12345!";
     protected WebDriver driver;
 
     @BeforeMethod

@@ -1,5 +1,6 @@
 package com.facundo.automation.ui.tests;
 
+import com.facundo.automation.ui.base.BaseTest;
 import com.facundo.automation.ui.models.OrderData;
 import com.facundo.automation.ui.pages.CartPage;
 import com.facundo.automation.ui.pages.CheckoutPage;
