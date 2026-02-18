@@ -18,17 +18,17 @@ public class ProductExtractionTest extends BaseTest {
     @Test
     public void shouldExtractProductsFromFirstTwoPages() {
         List<Product> products = new ArrayList<>();
+
         HomePage homePage = new HomePage(driver);
         homePage.open();
 
         List<Product> firstPageProducts = homePage.getProductsFromCurrentPage();
         homePage.goToNextPage();
-
         List<Product> secondPageProducts = homePage.getProductsFromCurrentPage();
+
         products.addAll(firstPageProducts);
         products.addAll(secondPageProducts);
 
-        // Assertions
         Assert.assertFalse(firstPageProducts.isEmpty(),
                 "Error | First page should contain products.");
 
