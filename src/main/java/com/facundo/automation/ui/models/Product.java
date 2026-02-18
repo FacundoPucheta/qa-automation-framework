@@ -10,7 +10,7 @@ public class Product {
 
     public Product(String name, String price, String link) {
         this.name = name;
-        this.price = price;
+        this.price = sanitizePrice(price);
         this.link = link;
     }
 
@@ -24,6 +24,14 @@ public class Product {
 
     public String getLink() {
         return link;
+    }
+
+    /**
+     * Strips currency symbols and whitespace from raw price strings. ("$360 " => "360")
+     */
+    private String sanitizePrice(String rawPrice) {
+        if (rawPrice == null) return "";
+        return rawPrice.replaceAll("[^\\d.]", "").trim();
     }
 
     /**
