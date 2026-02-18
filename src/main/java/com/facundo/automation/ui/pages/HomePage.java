@@ -1,6 +1,7 @@
 package com.facundo.automation.ui.pages;
 
 import com.facundo.automation.ui.models.Product;
+import com.facundo.automation.ui.utils.ConfigManager;
 import com.facundo.automation.ui.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class HomePage {
     //  CONSTANTS
-    private static final String BASE_URL = "https://www.demoblaze.com/";
+    private static final String BASE_URL = ConfigManager.get("ui.base.url");
 
     //  LOCATORS
     private final By cntProductCard = By.cssSelector(".card");
