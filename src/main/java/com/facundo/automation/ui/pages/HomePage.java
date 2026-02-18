@@ -24,7 +24,6 @@ public class HomePage {
 
     //  DRIVER & HELPERS
     private final WebDriver driver;
-
     private final WaitUtils wait;
 
     //  CONSTRUCTOR
@@ -34,7 +33,6 @@ public class HomePage {
     }
 
     //  PUBLIC METHODS
-
     public void open() {
         driver.get(BASE_URL);
         wait.untilAllVisible(cntProductCard);
@@ -73,6 +71,21 @@ public class HomePage {
         WebElement firstCard = cards.get(0);
         wait.untilClickable(btnNext).click();
         wait.untilStale(firstCard);
+    }
+
+    /**
+     * Clicks a randomly selected product from the current page.
+     *
+     * @throws IllegalStateException if no products are found on the page
+     */
+    public void clickRandomProduct() {
+        List<WebElement> products = driver.findElements(lnkProductName);
+        if (products.isEmpty()) {
+            throw new IllegalStateException("No products found on home page");
+        }
+
+        int randomIndex = (int) (Math.random() * products.size());
+        products.get(randomIndex).click();
     }
 
 }
