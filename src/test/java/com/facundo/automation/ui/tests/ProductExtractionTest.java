@@ -17,15 +17,14 @@ public class ProductExtractionTest extends BaseTest {
 
     @Test
     public void shouldExtractProductsFromFirstTwoPages() {
+        List<Product> products = new ArrayList<>();
         HomePage homePage = new HomePage(driver);
         homePage.open();
 
         List<Product> firstPageProducts = homePage.getProductsFromCurrentPage();
-
         homePage.goToNextPage();
-        List<Product> secondPageProducts = homePage.getProductsFromCurrentPage();
-        List<Product> products = new ArrayList<>();
 
+        List<Product> secondPageProducts = homePage.getProductsFromCurrentPage();
         products.addAll(firstPageProducts);
         products.addAll(secondPageProducts);
 

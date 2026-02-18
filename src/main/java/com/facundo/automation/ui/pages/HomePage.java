@@ -17,13 +17,14 @@ public class HomePage {
     private static final String BASE_URL = "https://www.demoblaze.com/";
 
     //  LOCATORS
-    private final By productCards = By.cssSelector(".card");
-    private final By productName = By.cssSelector(".card-title a");
-    private final By productPrice = By.cssSelector(".card h5");
-    private final By nextButton = By.id("next2");
+    private final By cntProductCard = By.cssSelector(".card");
+    private final By lnkProductName = By.cssSelector(".card-title a");
+    private final By txtProductPrice = By.cssSelector(".card-block h5");
+    private final By btnNext = By.id("next2");
 
     //  DRIVER & HELPERS
     private final WebDriver driver;
+
     private final WaitUtils wait;
 
     //  CONSTRUCTOR
@@ -36,7 +37,7 @@ public class HomePage {
 
     public void open() {
         driver.get(BASE_URL);
-        wait.untilAllVisible(productCards);
+        wait.untilAllVisible(cntProductCard);
     }
 
     /**
@@ -45,15 +46,15 @@ public class HomePage {
      * @return list of {@link Product} objects
      */
     public List<Product> getProductsFromCurrentPage() {
-        wait.untilAllVisible(productCards);
+        wait.untilAllVisible(cntProductCard);
 
         List<Product> products = new ArrayList<>();
-        List<WebElement> cards = driver.findElements(productCards);
+        List<WebElement> cards = driver.findElements(cntProductCard);
 
         for (WebElement card : cards) {
-            String name = card.findElement(productName).getText();
-            String price = card.findElement(productPrice).getText();
-            String link = card.findElement(productName).getAttribute("href");
+            String name = card.findElement(lnkProductName).getText();
+            String price = card.findElement(txtProductPrice).getText();
+            String link = card.findElement(lnkProductName).getAttribute("href");
 
             products.add(new Product(name, price, link));
         }
@@ -66,11 +67,11 @@ public class HomePage {
      * Handles dynamic DOM updates.
      */
     public void goToNextPage() {
-        List<WebElement> cards = driver.findElements(productCards);
+        List<WebElement> cards = driver.findElements(cntProductCard);
         if (cards.isEmpty()) return;
 
         WebElement firstCard = cards.get(0);
-        wait.untilClickable(nextButton).click();
+        wait.untilClickable(btnNext).click();
         wait.untilStale(firstCard);
     }
 
