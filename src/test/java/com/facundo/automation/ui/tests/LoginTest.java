@@ -6,6 +6,9 @@ import com.facundo.automation.ui.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+/**
+ * Tests successful login flow on Demoblaze.
+ */
 public class LoginTest extends BaseTest {
     @Test
     public void shouldLoginSuccessfully() {
