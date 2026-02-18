@@ -16,7 +16,7 @@ public class PurchaseTest extends BaseTest {
      * <p>
      * Expected result: confirmation message "Thank you for your purchase!" is displayed.
      */
-    @Test
+    @Test(groups = "ui")
     public void shouldCompletePurchaseSuccessfully() {
         HomePage homePage = new HomePage(driver);
         ProductPage productPage = new ProductPage(driver);

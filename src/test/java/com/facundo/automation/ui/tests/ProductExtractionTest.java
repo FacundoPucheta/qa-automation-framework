@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class ProductExtractionTest extends BaseTest {
 
-    @Test
+    @Test(groups = "ui")
     public void shouldExtractProductsFromFirstTwoPages() {
         List<Product> products = new ArrayList<>();
 

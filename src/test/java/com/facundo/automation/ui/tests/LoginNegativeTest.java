@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
  * Verifies that an error alert is displayed when credentials are invalid.
  */
 public class LoginNegativeTest extends BaseTest {
-    @Test
+    @Test(groups = "ui")
     public void shouldShowErrorOnInvalidCredentials() {
         new HomePage(driver).open();
 

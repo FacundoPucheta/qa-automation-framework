@@ -8,9 +8,10 @@ import org.testng.annotations.Test;
 
 /**
  * Tests successful login flow on Demoblaze.
+ * Verifies that a user can log in when credentials are valid.
  */
 public class LoginTest extends BaseTest {
-    @Test
+    @Test(groups = "ui")
     public void shouldLoginSuccessfully() {
         new HomePage(driver).open();
 

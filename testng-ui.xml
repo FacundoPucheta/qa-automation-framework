@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="UI Suite" verbose="1">
+    <test name="UI Tests">
+        <classes>
+            <class name="com.facundo.automation.ui.tests.ProductExtractionTest"/>
+            <class name="com.facundo.automation.ui.tests.PurchaseTest"/>
+            <class name="com.facundo.automation.ui.tests.LoginTest"/>
+            <class name="com.facundo.automation.ui.tests.LoginNegativeTest"/>
+        </classes>
+    </test>
+</suite>
