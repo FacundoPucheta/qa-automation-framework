@@ -1,6 +1,7 @@
 package com.facundo.automation.ui.pages;
 
 import com.facundo.automation.ui.models.Product;
+import com.facundo.automation.ui.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,41 +10,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Page Object representing the home page of Demoblaze.
- * <p>
- * Responsible for retrieving product data and navigating between pages.
+ * Page Object representing the Demoblaze Home page.
  */
 public class HomePage {
-    //Constants
+    //  CONSTANTS
     private static final String BASE_URL = "https://www.demoblaze.com/";
-    private final WebDriver driver;
 
-    //Selectors
+    //  LOCATORS
     private final By productCards = By.cssSelector(".card");
     private final By productName = By.cssSelector(".card-title a");
     private final By productPrice = By.cssSelector(".card h5");
     private final By nextButton = By.id("next2");
 
-    //Constructor
+    //  DRIVER & HELPERS
+    private final WebDriver driver;
+    private final WaitUtils wait;
+
+    //  CONSTRUCTOR
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WaitUtils(driver);
     }
 
-    //Public Methods
+    //  PUBLIC METHODS
 
-    /**
-     * Opens the base url.
-     */
     public void open() {
         driver.get(BASE_URL);
+        wait.untilAllVisible(productCards);
     }
 
     /**
-     * Extracts all visible products from the current page.
+     * Retrieves all visible products from the current page.
      *
-     * @return {@link List<Product>} of Product objects
+     * @return list of {@link Product} objects
      */
     public List<Product> getProductsFromCurrentPage() {
+        wait.untilAllVisible(productCards);
+
         List<Product> products = new ArrayList<>();
         List<WebElement> cards = driver.findElements(productCards);
 
@@ -58,7 +61,17 @@ public class HomePage {
         return products;
     }
 
+    /**
+     * Navigates to the next product page if available.
+     * Handles dynamic DOM updates.
+     */
     public void goToNextPage() {
-        driver.findElement(nextButton).click();
+        List<WebElement> cards = driver.findElements(productCards);
+        if (cards.isEmpty()) return;
+
+        WebElement firstCard = cards.get(0);
+        wait.untilClickable(nextButton).click();
+        wait.untilStale(firstCard);
     }
+
 }
