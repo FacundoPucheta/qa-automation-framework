@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QA Automation Suite" verbose="1">
+    <suite-files>
+        <suite-file path="testng-ui.xml"/>
+        <suite-file path="testng-api.xml"/>
+    </suite-files>
+</suite>
