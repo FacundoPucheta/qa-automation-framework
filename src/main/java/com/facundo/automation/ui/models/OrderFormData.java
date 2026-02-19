@@ -3,7 +3,7 @@ package com.facundo.automation.ui.models;
 /**
  * Represents the data required to complete a purchase order form.
  */
-public class OrderData {
+public class OrderFormData {
     private final String name;
     private final String country;
     private final String city;
@@ -11,7 +11,7 @@ public class OrderData {
     private final String month;
     private final String year;
 
-    public OrderData(String name, String country, String city, String card, String month, String year) {
+    public OrderFormData(String name, String country, String city, String card, String month, String year) {
         this.name = name;
         this.country = country;
         this.city = city;

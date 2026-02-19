@@ -1,6 +1,6 @@
 package com.facundo.automation.ui.tests;
 
-import com.facundo.automation.ui.base.BaseTest;
+import com.facundo.automation.ui.base.BaseUiTest;
 import com.facundo.automation.ui.models.Product;
 import com.facundo.automation.ui.pages.HomePage;
 import com.facundo.automation.ui.utils.FileUtils;
@@ -14,7 +14,7 @@ import java.util.List;
  * Tests product data extraction from the first two pages of Demoblaze.
  * Validates names, prices, and links. Then exports results to CSV.
  */
-public class ProductExtractionTest extends BaseTest {
+public class ProductExtractionTest extends BaseUiTest {
 
     @Test(groups = "ui")
     public void shouldExtractProductsFromFirstTwoPages() {

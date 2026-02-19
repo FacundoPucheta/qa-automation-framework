@@ -1,6 +1,6 @@
 package com.facundo.automation.ui.tests;
 
-import com.facundo.automation.ui.base.BaseTest;
+import com.facundo.automation.ui.base.BaseUiTest;
 import com.facundo.automation.ui.pages.HomePage;
 import com.facundo.automation.ui.pages.LoginPage;
 import org.testng.Assert;
@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
  * Tests unsuccessful login flow on Demoblaze.
  * Verifies that an error alert is displayed when credentials are invalid.
  */
-public class LoginNegativeTest extends BaseTest {
-    @Test(groups = "ui")
+public class LoginNegativeTest extends BaseUiTest {
+    @Test
     public void shouldShowErrorOnInvalidCredentials() {
         new HomePage(driver).open();
 

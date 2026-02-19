@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
  * <p>
  * Handles WebDriver setup and teardown for each test method.
  */
-public class BaseTest {
+public class BaseUiTest {
     protected static final String TEST_USERNAME = "testuser_facundoPucheta";
     protected static final String TEST_PASSWORD = "F12345!";
     protected WebDriver driver;

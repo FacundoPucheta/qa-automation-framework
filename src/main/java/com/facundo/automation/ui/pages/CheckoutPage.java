@@ -1,6 +1,6 @@
 package com.facundo.automation.ui.pages;
 
-import com.facundo.automation.ui.models.OrderData;
+import com.facundo.automation.ui.models.OrderFormData;
 import com.facundo.automation.ui.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -35,9 +35,9 @@ public class CheckoutPage {
     /**
      * Fills the order form with the provided data and submits it.
      *
-     * @param order {@link OrderData} containing user payment details
+     * @param order {@link OrderFormData} containing user payment details
      */
-    public void fillAndSubmit(OrderData order) {
+    public void fillAndSubmit(OrderFormData order) {
         wait.untilVisible(inputName).sendKeys(order.getName());
         driver.findElement(inputCountry).sendKeys(order.getCountry());
         driver.findElement(inputCity).sendKeys(order.getCity());

@@ -1,7 +1,7 @@
 package com.facundo.automation.ui.tests;
 
-import com.facundo.automation.ui.base.BaseTest;
-import com.facundo.automation.ui.models.OrderData;
+import com.facundo.automation.ui.base.BaseUiTest;
+import com.facundo.automation.ui.models.OrderFormData;
 import com.facundo.automation.ui.pages.CartPage;
 import com.facundo.automation.ui.pages.CheckoutPage;
 import com.facundo.automation.ui.pages.HomePage;
@@ -9,14 +9,14 @@ import com.facundo.automation.ui.pages.ProductPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class PurchaseTest extends BaseTest {
+public class PurchaseTest extends BaseUiTest {
 
     /**
      * Verifies that a user can complete a purchase end-to-end.
      * <p>
      * Expected result: confirmation message "Thank you for your purchase!" is displayed.
      */
-    @Test(groups = "ui")
+    @Test
     public void shouldCompletePurchaseSuccessfully() {
         HomePage homePage = new HomePage(driver);
         ProductPage productPage = new ProductPage(driver);
@@ -35,7 +35,7 @@ public class PurchaseTest extends BaseTest {
 
         cartPage.placeOrder();
 
-        checkoutPage.fillAndSubmit(new OrderData(
+        checkoutPage.fillAndSubmit(new OrderFormData(
                 "Juan Perez Random",
                 "Argentina",
                 "Santa Fe",
