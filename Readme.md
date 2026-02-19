@@ -7,8 +7,8 @@ Automation framework for UI testing (Selenium) and API testing (RestAssured)
 ## Technologies
 
 - Java 17
-- Selenium 4
-- RestAssured 5
+- Selenium
+- RestAssured
 - TestNG
 - WebDriverManager
 - Jackson
