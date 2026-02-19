@@ -3,6 +3,8 @@
 <suite name="API Suite" verbose="1">
     <test name="API Tests">
         <classes>
+            <class name="com.facundo.automation.api.tests.PetCreationTest"/>
+            <class name="com.facundo.automation.api.tests.PetOrderFlowTest"/>
         </classes>
     </test>
 </suite>
