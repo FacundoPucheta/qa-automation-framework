@@ -35,7 +35,7 @@ public class PetStoreClient {
     public Response getPetById(long id) {
         return RestAssured.given()
                 .when()
-                .get("/pet/{$id}", id);
+                .get("/pet/{id}", id);
     }
 
     //ORDER
