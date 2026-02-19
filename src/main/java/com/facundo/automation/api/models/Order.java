@@ -1,11 +1,20 @@
 package com.facundo.automation.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * Represents an Order entity as defined by the PetStore API.
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
     private long id;
     private long petId;
     private String shipDate;
     private String status;
     private boolean complete;
+
+    public Order() {
+    }
 
     public Order(long id, long petId, String shipDate, String status, boolean complete) {
         this.id = id;
