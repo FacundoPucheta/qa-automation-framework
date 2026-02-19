@@ -12,12 +12,12 @@ import java.util.List;
 
 /**
  * Tests product data extraction from the first two pages of Demoblaze.
- * Validates names, prices, and links. Then exports results to CSV.
+ * Validates names, prices, and links. Then exports results to CSV in target/products.txt
  */
 public class ProductExtractionTest extends BaseUiTest {
 
-    @Test(groups = "ui")
-    public void shouldExtractProductsFromFirstTwoPages() {
+    @Test
+    public void shouldExtractAndExportProductsFromFirstTwoPages() {
         List<Product> products = new ArrayList<>();
 
         HomePage homePage = new HomePage(driver);

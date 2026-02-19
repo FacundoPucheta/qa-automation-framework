@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * API tests for PetStore pet creation and data search.
+ * API tests for PetStore - validates pet creation by status and pet data retrieval.
  */
 public class PetCreationTest extends BaseApiTest {
     private long soldPetId;
@@ -35,7 +35,7 @@ public class PetCreationTest extends BaseApiTest {
     }
 
     @Test(dependsOnMethods = "shouldCreateTenPetsWithCorrectStatuses")
-    public void shouldGetSoldPetDetails() {
+    public void shouldRetrieveSoldPetDetails() {
         Response response = client.getPetById(soldPetId);
 
         Assert.assertEquals(response.getStatusCode(), 200,

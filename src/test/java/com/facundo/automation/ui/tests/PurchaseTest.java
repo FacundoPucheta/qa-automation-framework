@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 public class PurchaseTest extends BaseUiTest {
 
     /**
-     * Verifies that a user can complete a purchase end-to-end.
+     * Test that validate purchase flow
      * <p>
-     * Expected result: confirmation message "Thank you for your purchase!" is displayed.
+     * Product selection, cart review, checkout form submission and confirmation validation
      */
     @Test
     public void shouldCompletePurchaseSuccessfully() {

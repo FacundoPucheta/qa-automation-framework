@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * API tests for PetStore order flow.
+ * API tests to validate order creation flow for selected pets.
  */
 public class PetOrderFlowTest extends BaseApiTest {
     List<Pet> selectedPets;
