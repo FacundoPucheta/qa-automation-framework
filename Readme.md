@@ -1,6 +1,6 @@
 # QA Automation Framework
 
-Java automation framework for UI testing with Selenium and API testing with RestAssured.
+Automation framework for UI testing (Selenium) and API testing (RestAssured)
 
 ---
 
@@ -85,6 +85,13 @@ mvn test -Dsuite=testng-api.xml
 
 ```bash
 mvn test -Dsuite=testng.xml
+```
+
+### Headless Mode
+Append `-Dheadless=true` to any UI test command:
+
+```bash
+mvn test -Dsuite=testng-ui.xml -Dheadless=true
 ```
 
 ## Websites used
