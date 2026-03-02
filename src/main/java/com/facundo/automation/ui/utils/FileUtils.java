@@ -23,7 +23,6 @@ public class FileUtils {
     public static void writeProductsToCsv(List<Product> products) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_PATH))) {
             writer.write("name,price,link");
-            writer.newLine();
 
             for (Product product : products) {
                 writer.write(formatProduct(product));
