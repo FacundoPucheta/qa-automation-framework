@@ -1,7 +1,7 @@
 package com.facundo.automation.ui.pages;
 
 import com.facundo.automation.ui.models.Product;
-import com.facundo.automation.ui.utils.ConfigManager;
+import com.facundo.automation.utils.ConfigManager;
 import com.facundo.automation.ui.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

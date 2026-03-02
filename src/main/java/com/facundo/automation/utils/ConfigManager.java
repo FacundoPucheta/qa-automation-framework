@@ -1,4 +1,4 @@
-package com.facundo.automation.ui.utils;
+package com.facundo.automation.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

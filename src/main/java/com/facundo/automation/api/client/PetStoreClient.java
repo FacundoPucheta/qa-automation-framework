@@ -2,7 +2,7 @@ package com.facundo.automation.api.client;
 
 import com.facundo.automation.api.models.Order;
 import com.facundo.automation.api.models.Pet;
-import com.facundo.automation.ui.utils.ConfigManager;
+import com.facundo.automation.utils.ConfigManager;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
