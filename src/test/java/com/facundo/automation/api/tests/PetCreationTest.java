@@ -37,17 +37,18 @@ public class PetCreationTest extends BaseApiTest {
     @Test(dependsOnMethods = "shouldCreateTenPetsWithCorrectStatuses")
     public void shouldRetrieveSoldPetDetails() {
         Response response = client.getPetById(soldPetId);
+        Pet petResponse = response.as(Pet.class);
 
         Assert.assertEquals(response.getStatusCode(), 200,
                 "Error | Status code was not the expected");
 
-        Assert.assertEquals(response.jsonPath().getLong("id"), soldPetId,
+        Assert.assertEquals(petResponse.getId(), soldPetId,
                 "Error | Pet ID mismatch");
 
-        Assert.assertEquals(response.jsonPath().getString("status"), "sold",
+        Assert.assertEquals(petResponse.getStatus(), "sold",
                 "Error | Pet status should be sold");
 
-        Assert.assertNotNull(response.jsonPath().getString("name"),
+        Assert.assertNotNull(petResponse.getName(),
                 "Error | Pet name should not be null");
     }
 
