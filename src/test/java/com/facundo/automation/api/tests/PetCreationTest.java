@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.Matchers.notNullValue;
+
 /**
  * API tests for PetStore - validates pet creation by status and pet data retrieval.
  */
@@ -37,6 +39,11 @@ public class PetCreationTest extends BaseApiTest {
     @Test(dependsOnMethods = "shouldCreateTenPetsWithCorrectStatuses")
     public void shouldRetrieveSoldPetDetails() {
         Response response = client.getPetById(soldPetId);
+
+        response.then()
+                .body("id", notNullValue())
+                .body("name", notNullValue());
+
         Pet petResponse = response.as(Pet.class);
 
         Assert.assertEquals(response.getStatusCode(), 200,

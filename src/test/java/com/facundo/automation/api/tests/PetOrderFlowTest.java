@@ -52,24 +52,26 @@ public class PetOrderFlowTest extends BaseApiTest {
         );
 
         Response orderResponse = client.createOrder(newOrder);
-        String shipDate = orderResponse.jsonPath().getString("shipDate");
+        Order newOrderCreated = orderResponse.as(Order.class);
+
+        String shipDate = newOrderCreated.getShipDate();
 
         Assert.assertEquals(orderResponse.getStatusCode(), 200,
                 "Error | Failed to create order for petId: " + petId);
 
-        Assert.assertTrue(orderResponse.jsonPath().getLong("id") > 0,
+        Assert.assertTrue(newOrderCreated.getId() > 0,
                 "Error | Order id should be generated and greater than 0");
 
-        Assert.assertEquals(orderResponse.jsonPath().getLong("petId"), petId,
+        Assert.assertEquals(newOrderCreated.getPetId(), petId,
                 "Error | Order petId mismatch");
 
         Assert.assertNotNull(shipDate,
                 "Error | shipDate should not be null");
 
-        Assert.assertEquals(orderResponse.jsonPath().getString("status"), "placed",
+        Assert.assertEquals(newOrderCreated.getStatus(), "placed",
                 "Error | Order status should be placed");
 
-        Assert.assertTrue(orderResponse.jsonPath().getBoolean("complete"),
+        Assert.assertTrue(newOrderCreated.isComplete(),
                 "Error | Order should be complete");
     }
 }
