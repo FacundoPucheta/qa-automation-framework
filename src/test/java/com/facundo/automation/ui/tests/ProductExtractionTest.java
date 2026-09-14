@@ -4,6 +4,7 @@ import com.facundo.automation.ui.base.BaseUiTest;
 import com.facundo.automation.ui.models.Product;
 import com.facundo.automation.ui.pages.HomePage;
 import com.facundo.automation.ui.utils.FileUtils;
+import com.facundo.automation.utils.LoggerUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,6 +26,7 @@ public class ProductExtractionTest extends BaseUiTest {
 
         List<Product> firstPageProducts = homePage.getProductsFromCurrentPage();
         homePage.goToNextPage();
+        LoggerUtils.info("Advance to products next page");
         List<Product> secondPageProducts = homePage.getProductsFromCurrentPage();
 
         products.addAll(firstPageProducts);
@@ -48,6 +50,7 @@ public class ProductExtractionTest extends BaseUiTest {
         Assert.assertTrue(products.stream().allMatch(product -> product.getPrice() != null && product.getPrice().matches("^\\$?\\d+$")),
                 "Error | All products should have a valid price format (e.g., $700).");
 
+        LoggerUtils.info("All products obtained");
         FileUtils.writeProductsToCsv(products);
     }
 }

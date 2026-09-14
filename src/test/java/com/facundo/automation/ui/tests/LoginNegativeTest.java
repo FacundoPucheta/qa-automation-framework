@@ -3,6 +3,7 @@ package com.facundo.automation.ui.tests;
 import com.facundo.automation.ui.base.BaseUiTest;
 import com.facundo.automation.ui.pages.HomePage;
 import com.facundo.automation.ui.pages.LoginPage;
+import com.facundo.automation.utils.LoggerUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,5 +23,7 @@ public class LoginNegativeTest extends BaseUiTest {
         String errorMsg = loginPage.getAlertMessage();
         Assert.assertEquals(errorMsg, "Wrong password.",
                 "Error | Error message should be 'Wrong password.'");
+
+        LoggerUtils.success("Error message showed as expected");
     }
 }

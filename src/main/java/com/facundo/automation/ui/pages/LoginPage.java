@@ -1,6 +1,7 @@
 package com.facundo.automation.ui.pages;
 
 import com.facundo.automation.ui.utils.WaitUtils;
+import com.facundo.automation.utils.LoggerUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -26,6 +27,7 @@ public class LoginPage {
     public void openLoginModal() {
         wait.untilClickable(btnLogin).click();
         wait.untilVisible(inputUsername);
+        LoggerUtils.info("Login page loaded");
     }
 
     public void login(String username, String password) {

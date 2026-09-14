@@ -3,6 +3,7 @@ package com.facundo.automation.api.tests;
 import com.facundo.automation.api.base.BaseApiTest;
 import com.facundo.automation.api.models.Order;
 import com.facundo.automation.api.models.Pet;
+import com.facundo.automation.utils.LoggerUtils;
 import com.facundo.automation.utils.TestDataUtils;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -73,5 +74,7 @@ public class PetOrderFlowTest extends BaseApiTest {
 
         Assert.assertTrue(newOrderCreated.isComplete(),
                 "Error | Order should be complete");
+
+        LoggerUtils.success("New order created");
     }
 }

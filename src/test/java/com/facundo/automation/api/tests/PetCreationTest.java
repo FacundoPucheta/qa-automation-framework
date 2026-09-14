@@ -2,6 +2,7 @@ package com.facundo.automation.api.tests;
 
 import com.facundo.automation.api.base.BaseApiTest;
 import com.facundo.automation.api.models.Pet;
+import com.facundo.automation.utils.LoggerUtils;
 import com.facundo.automation.utils.TestDataUtils;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -34,6 +35,8 @@ public class PetCreationTest extends BaseApiTest {
 
         Assert.assertEquals(createdPetIds.size(), 10,
                 "Error | Should been created 10 pets");
+
+        LoggerUtils.success("Successfully created 10 pets");
     }
 
     @Test(dependsOnMethods = "shouldCreateTenPetsWithCorrectStatuses")
@@ -57,6 +60,8 @@ public class PetCreationTest extends BaseApiTest {
 
         Assert.assertNotNull(petResponse.getName(),
                 "Error | Pet name should not be null");
+
+        LoggerUtils.success("Pet retrieved");
     }
 
     private void createAndValidatePet(long id, String name, String status) {
@@ -75,6 +80,9 @@ public class PetCreationTest extends BaseApiTest {
         Assert.assertEquals(response.jsonPath().getString("status"), status,
                 "Error | Status mismatch for pet with id: " + id);
 
+        LoggerUtils.success("Pet successfully created");
+
         createdPetIds.add(id);
+        LoggerUtils.success("Pet ID stored");
     }
 }
