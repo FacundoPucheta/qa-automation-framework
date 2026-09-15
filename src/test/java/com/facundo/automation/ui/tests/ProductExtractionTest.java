@@ -19,6 +19,7 @@ public class ProductExtractionTest extends BaseUiTest {
 
     @Test
     public void shouldExtractAndExportProductsFromFirstTwoPages() {
+        LoggerUtils.start("UI TEST | Should Extract And Export Products From First Two Pages");
         List<Product> products = new ArrayList<>();
 
         HomePage homePage = new HomePage(driver);
@@ -26,7 +27,7 @@ public class ProductExtractionTest extends BaseUiTest {
 
         List<Product> firstPageProducts = homePage.getProductsFromCurrentPage();
         homePage.goToNextPage();
-        LoggerUtils.info("Advance to products next page");
+        LoggerUtils.info("Advance to products next page\n");
         List<Product> secondPageProducts = homePage.getProductsFromCurrentPage();
 
         products.addAll(firstPageProducts);
@@ -50,7 +51,8 @@ public class ProductExtractionTest extends BaseUiTest {
         Assert.assertTrue(products.stream().allMatch(product -> product.getPrice() != null && product.getPrice().matches("^\\$?\\d+$")),
                 "Error | All products should have a valid price format (e.g., $700).");
 
-        LoggerUtils.info("All products obtained");
+        LoggerUtils.info("All products obtained\n");
         FileUtils.writeProductsToCsv(products);
+        LoggerUtils.end("UI TEST | Should Extract And Export Products From First Two Pages");
     }
 }

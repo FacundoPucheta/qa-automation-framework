@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseUiTest {
     @Test
     public void shouldLoginSuccessfully() {
+        LoggerUtils.start("UI TEST | Should Login Successfully");
         new HomePage(driver).open();
 
         LoginPage loginPage = new LoginPage(driver);
@@ -24,6 +25,7 @@ public class LoginTest extends BaseUiTest {
         Assert.assertTrue(userDisplayed.contains(TEST_USERNAME),
                 "Error | Logged-in username should appear in navbar");
 
-        LoggerUtils.success("User logged in successfully");
+        LoggerUtils.success("User logged in successfully\n");
+        LoggerUtils.start("UI TEST | Should Login Successfully");
     }
 }

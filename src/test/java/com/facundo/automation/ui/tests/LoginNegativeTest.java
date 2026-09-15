@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 public class LoginNegativeTest extends BaseUiTest {
     @Test
     public void shouldShowErrorOnInvalidCredentials() {
+        LoggerUtils.start("UI TEST | Should Show Error On Invalid Credentials");
         new HomePage(driver).open();
 
         LoginPage loginPage = new LoginPage(driver);
@@ -24,6 +25,7 @@ public class LoginNegativeTest extends BaseUiTest {
         Assert.assertEquals(errorMsg, "Wrong password.",
                 "Error | Error message should be 'Wrong password.'");
 
-        LoggerUtils.success("Error message showed as expected");
+        LoggerUtils.success("Error message showed as expected\n");
+        LoggerUtils.end("UI TEST | Should Show Error On Invalid Credentials");
     }
 }
