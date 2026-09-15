@@ -1,6 +1,7 @@
 package com.facundo.automation.ui.pages;
 
 import com.facundo.automation.ui.utils.WaitUtils;
+import com.facundo.automation.utils.LoggerUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -32,6 +33,7 @@ public class ProductPage {
         wait.untilClickable(btnAddToCart).click();
         wait.untilAlertPresent();
         driver.switchTo().alert().accept();
+        LoggerUtils.info("Product added to cart");
     }
 
 }

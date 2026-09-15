@@ -3,6 +3,7 @@ package com.facundo.automation.ui.pages;
 import com.facundo.automation.ui.models.Product;
 import com.facundo.automation.utils.ConfigManager;
 import com.facundo.automation.ui.utils.WaitUtils;
+import com.facundo.automation.utils.LoggerUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,6 +38,7 @@ public class HomePage {
     public void open() {
         driver.get(BASE_URL);
         wait.untilAllVisible(cntProductCard);
+        LoggerUtils.info("All products are visible");
     }
 
     /**
@@ -87,6 +89,7 @@ public class HomePage {
 
         int randomIndex = (int) (Math.random() * products.size());
         products.get(randomIndex).click();
+        LoggerUtils.info("Random product clicked");
     }
 
 }

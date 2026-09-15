@@ -3,6 +3,7 @@ package com.facundo.automation.ui.tests;
 import com.facundo.automation.ui.base.BaseUiTest;
 import com.facundo.automation.ui.pages.HomePage;
 import com.facundo.automation.ui.pages.LoginPage;
+import com.facundo.automation.utils.LoggerUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,7 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseUiTest {
     @Test
     public void shouldLoginSuccessfully() {
+        LoggerUtils.start("UI TEST | Should Login Successfully");
         new HomePage(driver).open();
 
         LoginPage loginPage = new LoginPage(driver);
@@ -22,5 +24,8 @@ public class LoginTest extends BaseUiTest {
         String userDisplayed = loginPage.getLoggedUsername();
         Assert.assertTrue(userDisplayed.contains(TEST_USERNAME),
                 "Error | Logged-in username should appear in navbar");
+
+        LoggerUtils.success("User logged in successfully\n");
+        LoggerUtils.start("UI TEST | Should Login Successfully");
     }
 }

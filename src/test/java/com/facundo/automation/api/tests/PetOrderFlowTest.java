@@ -3,6 +3,7 @@ package com.facundo.automation.api.tests;
 import com.facundo.automation.api.base.BaseApiTest;
 import com.facundo.automation.api.models.Order;
 import com.facundo.automation.api.models.Pet;
+import com.facundo.automation.utils.LoggerUtils;
 import com.facundo.automation.utils.TestDataUtils;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -20,6 +21,7 @@ public class PetOrderFlowTest extends BaseApiTest {
 
     @Test
     public void shouldListAvailablePets() {
+        LoggerUtils.start("API TEST | Should List Available Pets");
         Response availablePetsResponse = client.getPetsByStatus("available");
         Assert.assertEquals(availablePetsResponse.getStatusCode(), 200,
                 "Error | Failed to list available pets");
@@ -33,13 +35,19 @@ public class PetOrderFlowTest extends BaseApiTest {
 
         Assert.assertEquals(selectedPets.size(), 5,
                 "Error | Exactly 5 pets should be stored");
+
+        LoggerUtils.end("API TEST | Should List Available Pets");
     }
 
     @Test(dependsOnMethods = "shouldListAvailablePets")
     public void shouldCreateOrdersForAvailablePets() {
+        LoggerUtils.start("API TEST | Should Create Orders For Available Pets");
+
         for (Pet pet : selectedPets) {
             createAndValidateOrder(pet.getId());
         }
+
+        LoggerUtils.end("API TEST | Should Create Orders For Available Pets");
     }
 
     private void createAndValidateOrder(long petId) {
@@ -73,5 +81,7 @@ public class PetOrderFlowTest extends BaseApiTest {
 
         Assert.assertTrue(newOrderCreated.isComplete(),
                 "Error | Order should be complete");
+
+        LoggerUtils.success("New order created\n");
     }
 }
