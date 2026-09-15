@@ -6,6 +6,7 @@ import com.facundo.automation.ui.pages.CartPage;
 import com.facundo.automation.ui.pages.CheckoutPage;
 import com.facundo.automation.ui.pages.HomePage;
 import com.facundo.automation.ui.pages.ProductPage;
+import com.facundo.automation.utils.LoggerUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,7 @@ public class PurchaseTest extends BaseUiTest {
      */
     @Test
     public void shouldCompletePurchaseSuccessfully() {
+        LoggerUtils.start("UI TEST | Should Complete Purchase Successfully");
         HomePage homePage = new HomePage(driver);
         ProductPage productPage = new ProductPage(driver);
         CartPage cartPage = new CartPage(driver);
@@ -27,6 +29,7 @@ public class PurchaseTest extends BaseUiTest {
         homePage.clickRandomProduct();
 
         String productName = productPage.getProductTitle();
+        LoggerUtils.info("Selected product title: " + productName + "\n");
         productPage.addToCart();
 
         cartPage.open();
@@ -34,6 +37,7 @@ public class PurchaseTest extends BaseUiTest {
                 "Error | Cart should contain at least one item of " + productName);
 
         cartPage.placeOrder();
+        LoggerUtils.info("Order placed\n");
 
         checkoutPage.fillAndSubmit(new OrderFormData(
                 "Juan Perez Random",
@@ -48,5 +52,7 @@ public class PurchaseTest extends BaseUiTest {
                 "Error | Confirmation message is not the expected");
 
         checkoutPage.confirmPurchase();
+        LoggerUtils.success("Order purchased successfully\n");
+        LoggerUtils.end("UI TEST | Should Complete Purchase Successfully");
     }
 }

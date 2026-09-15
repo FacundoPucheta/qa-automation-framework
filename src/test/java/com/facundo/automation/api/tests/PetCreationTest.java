@@ -2,6 +2,7 @@ package com.facundo.automation.api.tests;
 
 import com.facundo.automation.api.base.BaseApiTest;
 import com.facundo.automation.api.models.Pet;
+import com.facundo.automation.utils.LoggerUtils;
 import com.facundo.automation.utils.TestDataUtils;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -21,6 +22,7 @@ public class PetCreationTest extends BaseApiTest {
 
     @Test
     public void shouldCreateTenPetsWithCorrectStatuses() {
+        LoggerUtils.start("API TEST | Should Create Ten Pets With Correct Statuses");
         for (int i = 1; i <= 5; i++) {
             createAndValidatePet(TestDataUtils.generateId(), "AvailablePet_" + i, "available");
         }
@@ -34,10 +36,14 @@ public class PetCreationTest extends BaseApiTest {
 
         Assert.assertEquals(createdPetIds.size(), 10,
                 "Error | Should been created 10 pets");
+
+        LoggerUtils.success("Successfully created 10 pets\n");
+        LoggerUtils.end("API TEST | Should Create Ten Pets With Correct Statuses");
     }
 
     @Test(dependsOnMethods = "shouldCreateTenPetsWithCorrectStatuses")
     public void shouldRetrieveSoldPetDetails() {
+        LoggerUtils.start("API TEST | Should Retrieve Sold Pet Details");
         Response response = client.getPetById(soldPetId);
 
         response.then()
@@ -57,6 +63,9 @@ public class PetCreationTest extends BaseApiTest {
 
         Assert.assertNotNull(petResponse.getName(),
                 "Error | Pet name should not be null");
+
+        LoggerUtils.success("Pet retrieved: " + petResponse.getName() + "\n          ID: " + petResponse.getId() + "\n");
+        LoggerUtils.end("API TEST | Should Retrieve Sold Pet Details");
     }
 
     private void createAndValidatePet(long id, String name, String status) {

@@ -3,6 +3,7 @@ package com.facundo.automation.ui.tests;
 import com.facundo.automation.ui.base.BaseUiTest;
 import com.facundo.automation.ui.pages.HomePage;
 import com.facundo.automation.ui.pages.LoginPage;
+import com.facundo.automation.utils.LoggerUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,7 @@ import org.testng.annotations.Test;
 public class LoginNegativeTest extends BaseUiTest {
     @Test
     public void shouldShowErrorOnInvalidCredentials() {
+        LoggerUtils.start("UI TEST | Should Show Error On Invalid Credentials");
         new HomePage(driver).open();
 
         LoginPage loginPage = new LoginPage(driver);
@@ -22,5 +24,8 @@ public class LoginNegativeTest extends BaseUiTest {
         String errorMsg = loginPage.getAlertMessage();
         Assert.assertEquals(errorMsg, "Wrong password.",
                 "Error | Error message should be 'Wrong password.'");
+
+        LoggerUtils.success("Error message showed as expected\n");
+        LoggerUtils.end("UI TEST | Should Show Error On Invalid Credentials");
     }
 }
